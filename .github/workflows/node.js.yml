@@ -26,12 +26,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - name: run ci
+      run: npm ci
+    - name: build
+      run: npm run build --if-present
+    - name: run test
+      run: npm test
     - name: Copy SSH Key and Set Permissions
       run: |
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > luandeptrai.pem
         chmod 600 luandeptrai.pem
     - name: SSH AND ACTION
-    - run: ssh -o StrictHostKeyChecking=no -i "luandeptrai.pem" ubuntu@ec2-3-27-208-104.ap-southeast-2.compute.amazonaws.com
+      run: ssh -o StrictHostKeyChecking=no -i "luandeptrai.pem" ubuntu@ec2-3-27-208-104.ap-southeast-2.compute.amazonaws.com
