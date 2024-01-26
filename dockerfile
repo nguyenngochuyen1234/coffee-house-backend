@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Mở cổng 3000 để ứng dụng Node.js lắng nghe
-EXPOSE 3000
+EXPOSE 8800
 
 RUN chmod +x ./node_modules/.bin/nodemon
 # Command để khởi động ứng dụng
