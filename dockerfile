@@ -16,5 +16,6 @@ COPY . .
 # Mở cổng 3000 để ứng dụng Node.js lắng nghe
 EXPOSE 3000
 
+RUN chmod +x /path/to/nodemon
 # Command để khởi động ứng dụng
 CMD ["npm", "start"]
