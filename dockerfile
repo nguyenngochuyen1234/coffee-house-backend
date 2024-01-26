@@ -1,5 +1,5 @@
 # Sử dụng một hình ảnh chứa Node.js
-FROM node:14
+FROM node:18
 
 # Tạo thư mục ứng dụng trong container
 WORKDIR /app
