@@ -34,4 +34,4 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > Test.pem
         chmod 600 Test.pem
     - name: SSH AND ACTION
-    - run: ssh -o StrictHostKeyChecking=no -i "luandeptrai.pem" ubuntu@ec2-52-65-221-32.ap-southeast-2.compute.amazonaws.com
+    - run: ssh -o StrictHostKeyChecking=no -i "luandeptrai.pem" ubuntu@ec2-3-27-208-104.ap-southeast-2.compute.amazonaws.com
