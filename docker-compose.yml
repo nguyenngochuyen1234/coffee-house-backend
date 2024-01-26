@@ -11,7 +11,7 @@ services:
       MYSQL_USER: my_user
       MYSQL_PASSWORD: my_password
     ports:
-      - "3306:3306"
+      - "3307:3307"
 
   # Node.js service
   nodejs:
@@ -20,6 +20,6 @@ services:
       dockerfile: Dockerfile
     container_name: nodejs_container
     ports:
-      - "3000:3000"
+      - "8800:8800"
     depends_on:
       - mysql
