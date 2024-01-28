@@ -2,6 +2,7 @@ import express from 'express'
 import { addTypeNews, deleteTypeNews, getAllTypeNews, getHello, updateTypeNews } from '../controllers/typeNews.js'
 const router = express.Router()
 
+router.get("/VietDan", getVietDan)
 router.get("/hello", getHello)
 router.get("/typeNews", getAllTypeNews)
 router.post("/typeNews",addTypeNews)
