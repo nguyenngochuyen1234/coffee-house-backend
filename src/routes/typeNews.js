@@ -1,5 +1,5 @@
 import express from 'express'
-import { addTypeNews, deleteTypeNews, getAllTypeNews, getHello, updateTypeNews } from '../controllers/typeNews.js'
+import { addTypeNews, deleteTypeNews, getVietDan, getAllTypeNews, getHello, updateTypeNews } from '../controllers/typeNews.js'
 const router = express.Router()
 
 router.get("/VietDan", getVietDan)
