@@ -25,7 +25,7 @@ export const addTypeNews = (req, res) => {
     ];
     db.query(q, [values], (err, data) => {
         if (err) return res.status(500).json(err);
-        return res.status(200).json("Type news has been created.");
+        return res.status(200).json({data:{id:data.insertId}, success:true});
     });
 };
 
