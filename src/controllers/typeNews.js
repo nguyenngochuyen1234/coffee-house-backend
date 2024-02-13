@@ -1,5 +1,12 @@
 import { db } from "../connect.js";
 
+export const getVietDan = (req, res) => {
+    res.send("VietDan")
+}
+export const getHello = (req, res) => {
+    res.send("HELLO")
+}
+
 export const getAllTypeNews = (req, res) => {
     const q = "SELECT * from typeNews";
 

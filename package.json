@@ -10,6 +10,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npm i nodemon -g",
     "start": "nodemon src/index.js"
   },
   "keywords": [],
