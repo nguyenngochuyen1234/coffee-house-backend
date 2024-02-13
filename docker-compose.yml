@@ -11,8 +11,8 @@ services:
       MYSQL_USER: my_user
       MYSQL_PASSWORD: my_password
     ports:
-      - "3307:3307"
-
+      - "3306:3306"
+#dsadsa
   # Node.js service
   nodejs:
     build:
