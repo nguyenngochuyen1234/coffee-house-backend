@@ -1,11 +1,13 @@
 import express from 'express'
-import { addNews, getAllNews } from '../controllers/news.js'
-import { upload } from '../middleware/multer.js'
+import { addNews, deleteNews, getAllNews, getNews, updateNews } from '../controllers/news.js'
 const router = express.Router()
 
 
-router.post("/news",upload.single('image'),addNews)
+router.post("/news",addNews)
 router.get("/news",getAllNews)
+router.put("/news", updateNews)
+router.delete("/news", deleteNews)
+router.get("/news/getNews/:id", getNews)
 
 
 export default router
