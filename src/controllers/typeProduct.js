@@ -45,7 +45,7 @@ export const updateTypeProduct = (req, res) => {
         req.body.TypeProduct_Name,
         req.body.TypeProduct_Img,
         req.body.TypeProduct_ID
-    ];
+    ]; 
 
     db.query(q, values, (err, data) => {
         if (err) return res.status(500).json(err);
