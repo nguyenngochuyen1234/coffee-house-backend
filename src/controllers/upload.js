@@ -1,6 +1,3 @@
-import { db } from "../connect.js";
-
-
 
 export const addNewsImage = (req, res) => {
     const filename = req.file.filename;

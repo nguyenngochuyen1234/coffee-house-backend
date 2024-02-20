@@ -41,6 +41,18 @@ export const deleteProduct = (req, res) => {
 
 }
 
+export const getProductByType = (req, res) => {
+    console.log(req.params.id)
+    const q = "SELECT * from product WHERE `TypeProduct_ID`=?";
+
+    db.query(q, [req.params.id], (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.status(200).json({ data });
+    });
+
+
+}
+
 export const updateProduct = (req, res) => {
     // const q = "UPDATE product SET Product_Name = ?, Product_Img = ? WHERE Product_ID = ?";
 
