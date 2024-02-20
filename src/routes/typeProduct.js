@@ -10,4 +10,4 @@ router.delete("/typeProduct/:id", deleteTypeProduct)
 router.put("/typeProduct", updateTypeProduct)
 
 
-export default router  
+export default router   
