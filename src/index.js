@@ -12,7 +12,7 @@ import 'dotenv/config.js'
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://app.netlify.com/sites/beautiful-pavlova-d4c397/deploys/65d76931176a6300783f8ecf",
+    origin: "*",
   })
 );
 app.use(express.static('public'))
