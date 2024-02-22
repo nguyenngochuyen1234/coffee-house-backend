@@ -53,7 +53,7 @@ export const deleteProduct = (req, res) => {
 } 
 
 export const getProductByType = (req, res) => {
-    console.log(req.params.id)
+   
     const q = "SELECT * from product WHERE `TypeProduct_ID`=?";
 
     db.query(q, [req.params.id], (err, data) => {
@@ -80,3 +80,14 @@ export const updateProduct = (req, res) => {
         return res.status(200).json({ data: { id: req.body.idProduct }, success: true });
     });
 };
+
+export const searchProduct = (req, res) => {
+    const q = "SELECT * FROM `product` WHERE `Product_Name` LIKE ?";
+    const values = `%${req.params.dataSearch}%`; // Thêm % vào giá trị tìm kiếm
+
+    db.query(q, [values], (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.status(200).json({ data });
+    });
+}
+

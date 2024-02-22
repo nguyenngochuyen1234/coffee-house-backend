@@ -92,6 +92,31 @@ export const deleteNews = (req, res) => {
     });
 }
 
+export const getNewsByTypeName = (req, res) => {
+
+    const q = "SELECT * FROM `news` INNER JOIN typenews on news.TypeNews_ID = typenews.TypeNews_ID WHERE typenews.TypeNews_Name = ?";
+
+    db.query(q, [req.params.TypeNews_Name], (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.status(200).json({ data });
+    });
+}
+
+export const pagination = (req, res) => {
+    const { page, pageSize, typeNews } = req.query;
+    const offset = (page - 1) * pageSize;
+    const query = `SELECT news.*, typenews.TypeNews_Name, total_count.total_news_count FROM news INNER JOIN typenews ON news.TypeNews_ID = typenews.TypeNews_ID INNER JOIN ( SELECT COUNT(*) AS total_news_count FROM news INNER JOIN typenews ON news.TypeNews_ID = typenews.TypeNews_ID WHERE typenews.TypeNews_Name = ? ) AS total_count ON 1=1 WHERE typenews.TypeNews_Name = ? LIMIT ${pageSize} OFFSET ${offset}`;
+
+    db.query(query, [typeNews, typeNews], (err, data) => {
+        if (err) {
+            console.error('Error fetching data:', err);
+            res.status(500).send('Internal Server Error');
+        } else {
+            res.json({data});
+        }
+    })
+}
+
 
 
 
