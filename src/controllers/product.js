@@ -33,7 +33,6 @@ export const addProduct = (req, res) => {
         req.body.Product_Description,
         req.body.TypeProduct_Name
     ]
-    console.log({ values })
     db.query(q, values, (err, data) => {
         if (err) return res.status(500).json(err);
         return res.status(200).json({ data: { id: randomId }, success: true });
@@ -73,7 +72,7 @@ export const updateProduct = (req, res) => {
         req.body.Product_Description,
         req.body.idProduct,
     ];
-
+    console.log([values])
     db.query(q, values, (err, data) => {
         if (err) return res.status(500).json(err);
         return res.status(200).json({ data: { id: req.body.idProduct }, success: true });
