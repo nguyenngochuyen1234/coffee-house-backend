@@ -22,19 +22,34 @@ export const addTypeProduct = (req, res) => {
     ]
     db.query(q, values, (err, data) => {
         if (err) return res.status(500).json(err);
-        return res.status(200).json({ data: { id: data.insertId }, success: true });
+        return res.status(200).json({ data: { id: randomId }, success: true });
     });
 };
 
 export const deleteTypeProduct = (req, res) => {
-    const q =
-    "DELETE FROM typeproduct WHERE `TypeProduct_ID`=?";
+    // Xóa tất cả sản phẩm có TypeProduct_ID = req.params.id
+const deleteProductsQuery = "DELETE FROM product WHERE `TypeProduct_ID`=?";
+db.query(deleteProductsQuery, [req.params.id], (err, productData) => {
+  if (err) {
+    return res.status(500).json(err);
+  }
 
-  db.query(q, [req.params.id], (err, data) => {
-    if (err) return res.status(500).json(err);
-    if(data.affectedRows>0) return res.status(200).json("Type product has been deleted.");
-    return res.status(403).json("error")
+  // Tiếp theo, xóa dòng từ bảng typeproduct
+  const deleteTypeProductQuery = "DELETE FROM typeproduct WHERE `TypeProduct_ID`=?";
+  db.query(deleteTypeProductQuery, [req.params.id], (err, typeProductData) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+
+    // Kiểm tra xem có bất kỳ dòng nào bị ảnh hưởng không và trả về phản hồi tương ứng
+    if (typeProductData.affectedRows > 0) {
+      return res.status(200).json("Type product and related products have been deleted.");
+    } else {
+      return res.status(403).json("No matching records found to delete.");
+    }
   });
+});
+
 
 }
 
