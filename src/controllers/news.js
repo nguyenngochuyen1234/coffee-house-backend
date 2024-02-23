@@ -19,7 +19,7 @@ export const addNews = (req, res) => {
     console.log(values)
     db.query(q, values, (err, data) => {
         if (err) return res.status(500).json(err);
-        return res.status(200).json({ data: { id: data.insertId }, success: true });
+        return res.status(200).json({ data: { id: id }, success: true });
     });
 };
 export const getAllNews = (req, res) => {
