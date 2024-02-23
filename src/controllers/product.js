@@ -66,10 +66,9 @@ export const getProductByType = (req, res) => {
 
 export const updateProduct = (req, res) => {
     const q = "UPDATE product SET Product_Name = ?, Product_Image = ?, Product_Price = ?, Product_Description = ? WHERE idProduct = ?";
-    const linkImage = `http://localhost:8800/uploads/${req.body.Product_Image}`
     const values = [
         req.body.Product_Name,
-        linkImage,
+        req.body.Product_Image,
         req.body.Product_Price,
         req.body.Product_Description,
         req.body.idProduct,
